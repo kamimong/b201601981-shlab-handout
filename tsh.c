@@ -1,7 +1,7 @@
 /* 
  * tsh - A tiny shell program with job control
  * 
- * 201601981_kim yeyun
+ * 201601981 kim yeyun
  */
 #include <stdio.h>
 #include <stdlib.h>
