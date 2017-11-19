@@ -168,12 +168,29 @@ int main(int argc, char **argv)
  * when we type ctrl-c (ctrl-z) at the keyboard.  
  */
 void eval(char *cmdline) 
-{
+{	
+	char *argv[MAXARGS];
+	pid_t pid;
+
+	parseline(cmdline, argv);
+	pid = fork();
+	if(!builtin_cmd(argv)){
+		if((pid)==0){
+			if(execve(argv[0], argv, environ)<0){
+				printf("%s : Command not found\n", argv);
+				exit(0);
+			}
+		}
+	}
+
 	return;
 }
 
 int builtin_cmd(char **argv)
-{
+{	char *cmd = argv[0];
+	if(!strcmp(cmd, "quit")){
+		exit(0);
+	}
 	return 0;
 }
 
