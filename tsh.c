@@ -179,6 +179,7 @@ void eval(char *cmdline)
 			if(execve(argv[0], argv, environ)<0){
 				printf("%s : Command not found\n", argv);
 				exit(0);
+
 			}
 		}
 	}
